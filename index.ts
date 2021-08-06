@@ -39,17 +39,17 @@ import * as _ from 'lodash';
 
 // with recursion
 
-function myMapCallback(element: any, index: number, array: any[]) {
+function myMapCallback(element: any, index: number, array: any[]): any {
   return element * 2;
 }
 
-function myMap(array: any[], myMapCallback: Function) {
+function myMap(array: any[], myMapCallback: Function): any[] {
   if (array.length === 0)
     return []
-  return myMapHelper(array[0], 0, array, [], myMapCallback)
+  return (myMapHelper(array[0], 0, array, [], myMapCallback))
 }
 
-function myMapHelper(item: any, i: number, array: any[], result: any[], myMapCallback: Function) {
+function myMapHelper(item: any, i: number, array: any[], result: any[], myMapCallback: Function): any | any[] {
   if (i === array.length)
     return result.push(myMapCallback(item, i, array));
   myMapHelper(array[i], i + 1, array, result, myMapCallback);
@@ -59,17 +59,17 @@ function myMapHelper(item: any, i: number, array: any[], result: any[], myMapCal
   return result.push(myMapCallback(item, i, array))
 }
 
-function myFilterCallback(element: any, index: number, array: []) {
+function myFilterCallback(element: any, index: number, array: []): boolean {
   return element < 1
 }
 
-function myFilter(array: any[], myFilterCallback: Function) {
+function myFilter(array: any[], myFilterCallback: Function): any[] | any {
   if (array.length === 0)
     return []
   return myFilterHelper(array[0], 0, array, [], myFilterCallback)
 }
 
-function myFilterHelper(item: any, i: number, array: any[], result: any[], myFilterCallback: Function) {
+function myFilterHelper(item: any, i: number, array: any[], result: any[], myFilterCallback: Function): any[] | any {
   if (i === array.length)
     return myFilterCallback(item, i, array) ? result.push(item) : result.push(null);
   myFilterHelper(array[i], i + 1, array, result, myFilterCallback);
@@ -81,12 +81,10 @@ function myFilterHelper(item: any, i: number, array: any[], result: any[], myFil
 const array = [0, 1, 2, 3];
 const obj = {myMap: myMap(array, myMapCallback), myFilter: myFilter(array, myFilterCallback)}
 
-console.log(_.isEqual(myFilter([0], myFilterCallback), [0]))
-console.log(_.isEqual(myFilter([1, 5, 6, 0, 7, 9], myFilterCallback), [0]))
-console.log(_.isEqual(myFilter([], myFilterCallback), []))
+console.log(_.isEqual(myFilter([0], myFilterCallback), [0]));
+console.log(_.isEqual(myFilter([1, 5, 6, 0, 7, 9], myFilterCallback), [0]));
+console.log(_.isEqual(myFilter([], myFilterCallback), []));
 
-console.log(_.isEqual(myMap(array, myMapCallback), [0, 2, 4, 6]))
-console.log(_.isEqual(myMap([1], myMapCallback), [2]))
-console.log(_.isEqual(myMap([], myMapCallback), []))
-
-array.map((item) => item)
+console.log(_.isEqual(myMap(array, myMapCallback), [0, 2, 4, 6]));
+console.log(_.isEqual(myMap([1], myMapCallback), [2]));
+console.log(_.isEqual(myMap([], myMapCallback), []));
