@@ -4,15 +4,15 @@ function myFilterCallback(element: number): boolean {
   return element > 5
 }
 
-function myFilter<T, R>(array: T[], myFilterCallback: (n: T) => R): R[] {
+function myFilter<T>(array: T[], myFilterCallback: (n: T) => boolean): T[] {
   return myFilterHelper(array, [], myFilterCallback).reverse()
 }
 
-function myFilterHelper<T, R>(curr_array: T[], result: R[], myFilterCallback: (n: T) => R): R[] {
+function myFilterHelper<T>(curr_array: T[], result: T[], myFilterCallback: (n: T) => boolean): T[] {
   if (!curr_array.length)
     return result
-  return myFilterHelper(curr_array.slice(1), _.pullAll([(myFilterCallback(curr_array[0]) ? curr_array[0] : null),
-    ...result], [null]), myFilterCallback)
+  return myFilterHelper(curr_array.slice(1), (myFilterCallback(curr_array[0]) ? [curr_array[0], ...result] : result),
+    myFilterCallback)
 }
 
 console.log(_.isEqual(myFilter([0], myFilterCallback), []));
