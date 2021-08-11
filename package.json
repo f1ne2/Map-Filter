@@ -1,0 +1,22 @@
+{
+  "name": "map-filter",
+  "version": "1.0.0",
+  "description": "// Реализовать свою функцию map и фильтр через рекурсии и без изменяемых переменных",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/f1ne2/Map-Filter.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/f1ne2/Map-Filter/issues"
+  },
+  "homepage": "https://github.com/f1ne2/Map-Filter#readme",
+  "dependencies": {
+    "lodash": "^4.17.21"
+  }
+}
