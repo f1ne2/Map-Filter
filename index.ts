@@ -5,8 +5,6 @@ function myFilterCallback(element: number): boolean {
 }
 
 function myFilter<T, R>(array: T[], myFilterCallback: (n: T) => R): R[] {
-  if (array.length === 0)
-    return []
   return myFilterHelper(array, [], myFilterCallback).reverse()
 }
 
